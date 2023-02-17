@@ -53,16 +53,46 @@
         }
         
     }
-        const playerSelection = prompt("Please choose rock, paper or scissors.").toLowerCase();
+        //const playerSelection = prompt("Please choose rock, paper or scissors.").toLowerCase();
         //console.log(playerSelection);
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        //const computerSelection = getComputerChoice();
+        //console.log(playRound(playerSelection, computerSelection));
+
+
+        function game(){
+
+            let playerWins = 0;
+            let computerWins = 0;
 
         for (let i = 0; i<5; i++){
-            console.log("This is round " + i);
-            console.log(playRound(playerSelection, computerSelection));
-            
+            const playerSelection = prompt("Please choose rock, paper or scissors.").toLowerCase();
+            console.log("This is round " + (i+1));
+            const computerSelection = getComputerChoice();
+            let round = playRound(playerSelection, computerSelection);
+            switch(round) {
+                case "player wins":
+                    playerWins++;
+                    break;
+                case "computer wins":
+                    computerWins++
+                    break;
+            }
+
+            console.log(round);
+            console.log(playerWins);
+            console.log(computerWins);
         }
+
+        if (playerWins>computerWins){
+                console.log("The player wins with a score of " + playerWins + " to " + computerWins);
+            } else if (computerWins>playerWins){
+                console.log("The computer wins with a score of " + computerWins + " to " + playerWins);
+            } else {
+                console.log("It is a draw");
+            }
+    }
+
+    game();
 
     </script>
 
