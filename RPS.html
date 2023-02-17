@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+  <h1>RPS</h1>
+  
+  <p></p>
+  
+    <script>
+        //input rock, paper or scissors
+        //computer inputs rock paper or scissors
+        //algorithm determines if you've won or lost
+
+        let rock = "rock";
+        let paper = "paper";
+        let scissors = "scissors";
+
+        
+        function getComputerChoice(){
+        let computerChoice = Math.floor(Math.random()*3)+1;
+        switch(computerChoice) {
+            case 1:
+                return rock;
+                break;
+            case 2:
+                return paper;
+                break;
+            case 3:
+                return scissors;
+                break;
+        }
+    }
+
+        function playRound(playerSelection, computerSelection){
+            console.log("computer plays: " + computerSelection);
+            if (playerSelection == rock && computerSelection == paper){
+                return "computer wins";
+            } else if (playerSelection == rock && computerSelection == scissors){
+                return "player wins";
+        } else if (playerSelection == paper && computerSelection == rock){
+            return "player wins";
+        } else if (playerSelection == paper && computerSelection == scissors){
+            return "computer wins";
+        } else if (playerSelection == scissors && computerSelection == rock){
+            return "computer wins";
+        } else if (playerSelection == scissors && computerSelection == paper){
+            return "player wins";
+        } else {
+            return "no one wins";
+        }
+        
+    }
+        const playerSelection = prompt("Please choose rock, paper or scissors.").toLowerCase();
+        //console.log(playerSelection);
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+
+        for (let i = 0; i<5; i++){
+            console.log("This is round " + i);
+            console.log(playRound(playerSelection, computerSelection));
+            
+        }
+
+    </script>
+
+</body>
+</html>
