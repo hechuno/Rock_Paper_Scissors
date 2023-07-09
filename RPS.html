@@ -11,6 +11,8 @@
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div> 
+
+    <div id="results"></div>
   <p></p>
   
     <script>
@@ -80,11 +82,26 @@
             let playerSelection;
             const wrapper = document.getElementById('wrapper');
 
+            const results = document.getElementById('results');
+            const score = document.createElement('p');
+            const nbRounds = document.createElement('p');
+            const winner = document.createElement('p');
+            results.appendChild(nbRounds);
+            results.appendChild(score);
+            results.appendChild(winner);
+
+            nbRounds.textContent = ("number of rounds: " + numberOfRounds);
+            score.textContent = ("score: player " + playerWins + " - " + computerWins + " computer");
+            
+
+
             wrapper.addEventListener('click', (event) =>{
                 const isButton = event.target.nodeName === 'BUTTON';
                 if(!isButton){
                     return;
                 }
+
+                winner.textContent = ("");
 
                 playerSelection = event.target.id;
                 const computerSelection = getComputerChoice();
@@ -103,18 +120,17 @@
                         numberOfRounds++;
                     }
 
+                    score.textContent = ("score: player " + playerWins + " - " + computerWins + " computer");
+                    nbRounds.textContent = ("number of rounds: " + numberOfRounds);
                     console.log(round);
-                    console.log("number of rounds: " + numberOfRounds);
-
-                    console.log("score: player " + playerWins + " - " + computerWins + " computer");
 
                     if(playerWins>=5){
-                        console.log("player wins the game");
+                        winner.textContent = ("player wins the game");
                         playerWins=0;
                         computerWins=0;
                     }
                     if(computerWins>=5){
-                        console.log("computer wins the game");
+                        winner.textContent = ("computer wins the game");
                         playerWins=0;
                         computerWins=0;
                     }
